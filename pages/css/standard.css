@@ -1,0 +1,138 @@
+.layout{
+  overflow: hidden;
+  position: relative;
+}
+
+.center-row{
+  text-align: center;
+}
+
+.center-div{
+  margin: 0 auto;
+  width: 200px;
+}
+
+.right-row{
+  text-align: right;
+}
+
+.layout h1{
+	text-transform: none;
+	font-weight: 100;
+	font-size: 5em;
+	letter-spacing: 4px;
+}
+
+.layout h2{
+    text-transform: none;
+    font-weight: 100;
+    font-size: 4em;
+    letter-spacing: 2px;
+}
+
+.layout h3{
+	text-transform: none;
+	font-weight: 100;
+  font-size: 3.5em;
+  letter-spacing: 1px;
+}
+
+.layout h4{
+	text-transform: none;
+	font-weight: 100;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+.layout h5{
+	text-transform: none;
+	font-weight: 100;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+
+.layout h6{
+	text-transform: none;
+	font-weight: 100;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.layout p{
+	text-transform: none;
+	font-weight: 150;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.dropdown-item:hover{background-color: rgba(0, 0, 0, 0.2);}
+
+.dark-container{
+  color: rgba(255, 255, 255, 0.9);
+  background-color:rgba(0, 0, 0, 0.9); 
+  padding: 5%;
+  padding-left: 10%;
+  padding-right:10%;
+}
+
+.light-container{
+  background-color: rgb(224, 226, 231);
+  color:rgba(0, 0, 0, 0.9); 
+  padding: 5%;
+  padding-left: 10%;
+  padding-right:10%;
+  font-weight: 300;
+}
+
+.experience-container{
+  background-image: linear-gradient(rgb(213, 218, 230), rgb(171, 178, 197), rgb(137, 151, 187));
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color:rgba(0, 0, 0, 0.9); 
+  padding: 5%;
+  padding-left: 10%;
+  padding-right:10%;
+  font-weight: 300;
+}
+
+.art-banner-container{
+  background-image: linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44));
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgba(255, 255, 255, 0.9); 
+  padding: 5%;
+  padding-left: 30%;
+  padding-right: 30%;
+  font-weight: 300;
+}
+
+.project-card{
+  padding: 10%;
+  margin-bottom: 8%;
+  background-image: linear-gradient(rgb(234, 238, 245), rgb(154, 164, 180));
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.light-text{
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-text{
+  color:rgba(0, 0, 0, 0.9); 
+}
+
+.hover-card:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
