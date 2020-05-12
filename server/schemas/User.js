@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+const bcrypt= require('bcryptjs');
+const SALT_WORK_FACTOR = 10; 
 require('dotenv').config();
 
 
@@ -17,44 +19,25 @@ var userSchema = new Schema({
     year: Number,
     email: String,
     bio: String,
-    funFact: String,
     avatar: String,
-
-    phone: String, 
-    concentrations: String,  
-
-    position1: String,
-    place1: String,  
-    location1: String, 
-    startMonth1: String, 
-    startYear1: Number, 
-    endMonth1: String, 
-    endYear1: Number, 
-    description1: String, 
-
-    position2: String, 
-    place2: String, 
-    location2: String, 
-    startMonth2: String, 
-    startYear2: Number, 
-    endMonth2: String, 
-    endYear2: Number, 
-    description2: String, 
-
-    position3: String, 
-    place3: String, 
-    location3: String, 
-    startMonth3: String, 
-    startYear3: Number, 
-    endMonth3: String, 
-    endYear3: Number, 
-    description3: String, 
-
-    industries: [String], 
-    tags: [String],
-
     isLive: Boolean
     });
+
+
+//prior to saving password, generate a salt and encrypt
+userSchema.pre('save', function(next){
+    let user = this; 
+    if (!user.isModified('password')) return next();
+    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
+        if (err) return next(err); 
+        bcrypt.hash(user.password, salt, function(err, hash){
+            if (err) return next(err); 
+            user.password = hash; 
+            next(); 
+        })
+    })
+})
+
 
 // export userSchema as a class called User
 module.exports = mongoose.model('User', userSchema);

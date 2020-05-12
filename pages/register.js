@@ -17,9 +17,8 @@ class Register extends Component {
         year: '',
         email: '', 
         bio: '', 
-        funFact: '',
         error: '',
-        isLive: false,
+        isLive: true,
         submitted: false
         };
 
@@ -110,9 +109,7 @@ class Register extends Component {
             firstName: this.state.firstName, 
             lastName: this.state.lastName, 
             email: this.state.email,
-            year: this.state.year,
             bio: this.state.bio, 
-            funFact: this.state.funFact, 
           };
     
         try {
@@ -229,15 +226,6 @@ class Register extends Component {
                             type="email"
                             id="email"
                             value={this.state.email}
-                            onChange={this.handleInputChange}
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="year">Class Year</Label>
-                        <Input
-                            type="number"
-                            id="year"
-                            value={this.state.year}
                             onChange={this.handleInputChange}
                         />
                     </FormGroup>

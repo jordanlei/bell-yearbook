@@ -4,7 +4,7 @@ require('dotenv').config();
 
 // import the User class from User.js
 var User = require('../schemas/User.js');
-
+const bcrypt= require('bcryptjs');
 
 router.post('/createuser', function(req, res, next) {
   // construct the User from the form data which is in the request body
@@ -53,6 +53,41 @@ router.post('/finduser', function(req, res, next) {
     }
   });
 });
+
+
+router.post('/authuser', function(req, res, next) {
+  var searchname = req.body.username;
+  var candidate  = req.body.password;
+  // find the policymaker
+  console.log("Finding Username")
+  User.findOne({ username: searchname }, (err, user) => {
+    if (err) {
+      res.type('html').status(200);
+      console.log('uh oh' + err);
+      res.write(err);
+    } else if (!user) {
+      res.type('html').status(400);
+      res.write('There are no users with that name');
+      res.end();
+    } else {
+      bcrypt.compare(candidate, user.password, function(err, isMatch) {
+        if (err) {
+          res.write(err)
+        } else if (!isMatch) {
+          res.type('html').status(500); 
+          res.write('Incorrect Password');
+          res.end()
+        } else {
+          console.log("Password matches!")
+          res.json(user)
+        }
+      })
+      
+    }
+  });
+});
+
+
 
 router.post('/updateuser', function(req, res, next) {
   var searchname = req.body.username;

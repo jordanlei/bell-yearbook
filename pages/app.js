@@ -18,7 +18,8 @@ class App extends Component{
         color: "rgba(168, 20, 37, 0.7)", 
       }
       const spanStyle= {
-        paddingTop: "15vh",
+        paddingTop: "25vh",
+        minHeight: "80vh",
       }
 
       const titleStyle= {
@@ -32,16 +33,15 @@ class App extends Component{
             <Layout >
               
               <div style= {spanStyle}>
-              <Fade duration={3000}>
                 <div style={{width: "30vw", margin:"0 auto"}}>
-                <h1 style={ampstyle}>&amp;</h1>
+                <img src="/spinny-hat.png" style={{width: "300px", zIndex: "-1"}}></img>
                 </div> 
-              </Fade>
+
                 
               </div>
-              <div style={{top: "45vh", position: "absolute", width:"100vw"}}>
+              <div style={{top: "55vh", position: "absolute", width:"100vw"}}>
               <Fade bottom duration={3000} delay={1000}>
-                <h1 style={{color: "rgba(255, 255, 255, 0.7)", textAlign: "center"}}>M&amp;T Resume Book</h1>
+                <h1 style={{color: "rgba(255, 255, 255, 0.7)", textAlign: "center"}}>Bell Yearbook</h1>
               </Fade> 
               </div>
             </Layout>

@@ -18,46 +18,8 @@ class SettingsPanel extends Component {
       email: this.props.data.email,
       year: this.props.data.year,
       bio: this.props.data.bio, 
-      funFact: this.props.data.funFact, 
       submitted: false,
-      
-      avatar: this.props.data.avatar,
 
-      phone: this.props.data.phone, 
-      concentrations: this.props.data.concentrations,  
-
-      position1: this.props.data.position1,
-      place1: this.props.data.place1, 
-      location1: this.props.data.location1, 
-      startMonth1: this.props.data.startMonth1, 
-      startYear1: this.props.data.startYear1, 
-      endMonth1: this.props.data.endMonth1, 
-      endYear1: this.props.data.endYear1, 
-      description1: this.props.data.description1, 
-      description1error: '',
-
-      position2: this.props.data.position2,
-      place2: this.props.data.place2,  
-      location2: this.props.data.location2, 
-      startMonth2: this.props.data.startMonth2, 
-      startYear2: this.props.data.startYear2, 
-      endMonth2: this.props.data.endMonth2, 
-      endYear2: this.props.data.endYear2, 
-      description2: this.props.data.description2, 
-      description2error: '',
-
-      position3: this.props.data.position3,
-      place3: this.props.data.place3,  
-      location3: this.props.data.location3, 
-      startMonth3: this.props.data.startMonth3, 
-      startYear3: this.props.data.startYear3, 
-      endMonth3: this.props.data.endMonth3, 
-      endYear3: this.props.data.endYear3, 
-      description3: this.props.data.description3, 
-      description3error: '',
-
-      industries: this.props.data.industries, 
-      tags: this.props.data.tags,
 
       isLive: this.props.data.isLive, 
       rSelected: '',
@@ -119,42 +81,6 @@ class SettingsPanel extends Component {
       year: this.state.year,
       bio: this.state.bio, 
       funFact: this.state.funFact, 
-
-      phone: this.state.phone, 
-      concentrations: this.state.concentrations,  
-
-      avatar: this.state.avatar,
-
-      position1: this.state.position1, 
-      location1: this.state.location1, 
-      place1: this.state.place1,
-      startMonth1: this.state.startMonth1, 
-      startYear1: this.state.startYear1, 
-      endMonth1: this.state.endMonth1, 
-      endYear1: this.state.endYear1, 
-      description1: this.state.description1, 
-
-      position2: this.state.position2, 
-      location2: this.state.location2, 
-      place2: this.state.place2,
-      startMonth2: this.state.startMonth2, 
-      startYear2: this.state.startYear2, 
-      endMonth2: this.state.endMonth2, 
-      endYear2: this.state.endYear2, 
-      description2: this.state.description2, 
-
-      position3: this.state.position3, 
-      location3: this.state.location3,
-      place3: this.state.place3, 
-      startMonth3: this.state.startMonth3, 
-      startYear3: this.state.startYear3, 
-      endMonth3: this.state.endMonth3, 
-      endYear3: this.state.endYear3, 
-      description3: this.state.description3, 
-
-      industries: this.state.industries, 
-      tags: this.state.tags,
-
       isLive: this.state.isLive
     };
 

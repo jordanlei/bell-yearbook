@@ -34,28 +34,22 @@ class Login extends Component {
   async handleSubmit (event) {
     event.preventDefault()
     const username = this.state.username
-    console.log("Submitted ..."+ JSON.stringify({username}))
+    const password = this.state.password
 
     try {
-      const response = await fetch('/api/finduser', {
+      const response = await fetch('/api/authuser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username })
+        body: JSON.stringify({ username , password })
       })
 
       if (response.ok) {
         response.json().then(res => 
             {
-                if(res.password== this.state.password)
-                {
-                    const token= this.state.username
-                    console.log("Signing in")
-                    login(token)
-                }
-                else
-                {
-                    this.setState({error: "Incorrect Username or Password"})
-                }
+              console.log(res)
+              const token= this.state.password
+              console.log("Signing in")
+              login(token)
             })
       } else {
         // https://github.com/developit/unfetch#caveats
