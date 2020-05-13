@@ -1,7 +1,7 @@
 .layout{
   overflow: hidden;
   position: relative;
-  font-family: "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Open Sans", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
 }
@@ -21,35 +21,35 @@
 
 .layout h1{
 	text-transform: none;
-	font-weight: 100;
+	font-weight: lighter;
 	font-size: 5em;
 	letter-spacing: 4px;
 }
 
 .layout h2{
     text-transform: none;
-    font-weight: 100;
+    font-weight: lighter;
     font-size: 4em;
     letter-spacing: 2px;
 }
 
 .layout h3{
 	text-transform: none;
-	font-weight: 100;
+	font-weight: lighter;
   font-size: 3.5em;
   letter-spacing: 1px;
 }
 
 .layout h4{
 	text-transform: none;
-	font-weight: 100;
+	font-weight: lighter;
   font-size: 2.5em;
   letter-spacing: 1px;
 }
 
 .layout h5{
 	text-transform: none;
-	font-weight: 100;
+	font-weight: lighter;
   font-size: 20px;
   letter-spacing: 1px;
 }
@@ -57,14 +57,14 @@
 
 .layout h6{
 	text-transform: none;
-	font-weight: 100;
+	font-weight: lighter;
   font-size: 15px;
   letter-spacing: 1px;
 }
 
 .layout p{
 	text-transform: none;
-	font-weight: 150;
+	font-weight: lighter;
   font-size: 20px;
   letter-spacing: 1px;
 }
