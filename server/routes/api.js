@@ -155,6 +155,7 @@ router.post('/createcomment', function(req, res, next) {
     to: req.body.to,
     comment: req.body.comment,
     avatar: req.body.avatar,
+    image: req.body.image
   });
   console.log("Comment Created")
   // save the user to the database
@@ -172,6 +173,48 @@ router.post('/createcomment', function(req, res, next) {
   });
 });
 
+
+router.post('/updatecomment', function(req, res, next) {
+  var id = req.body._id;
+  // find the policymaker
+  console.log("Updating User")
+  console.log(req.body)
+  Comment.findByIdAndUpdate(id, req.body, {new: true},  (err, user) => {
+    if (err) {
+      res.type('html').status(200);
+      console.log('uh oh' + err);
+      res.write(err);
+    } else if (!user) {
+      res.type('html').status(400);
+      res.write('There are no comments with that id');
+      res.end();
+    } else {
+      res.type('html').status(200);
+      res.json(user);
+    }
+  });
+});
+
+
+router.post('/deletecomment', function(req, res, next) {
+  var id = req.body._id;
+  // find the policymaker
+  console.log("Deleting Comment")
+  Comment.findByIdAndDelete(id, (err, user) => {
+    if (err) {
+      res.type('html').status(200);
+      console.log('uh oh' + err);
+      res.write(err);
+    } else if (!user) {
+      res.type('html').status(400);
+      res.write('There are no comments with that id');
+      res.end();
+    } else {
+      res.type('html').status(200);
+      res.json(user);
+    }
+  });
+});
 
 router.post('/findcomments', function(req, res, next) {
   console.log(req.body)

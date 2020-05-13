@@ -122,7 +122,7 @@ class ClassUsers extends Component{
             {
                 return(
                     <Fade bottom duration={2000} delay={100}>
-                    <Card style={cardStyle}>
+                    <Card className="classof-card" style={cardStyle}>
                     {cardContent}
                     </Card>
                     </Fade>

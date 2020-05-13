@@ -2,8 +2,8 @@ import Router from 'next/router'
 import fetch from 'isomorphic-unfetch'
 import SimpleTitle from './components/SimpleTitle';
 import StyleDiv from './components/StyleDiv';
-import { Alert, Button, ButtonGroup, Row, Col, 
-    Form, FormGroup, Label, Input, Card, CardDeck, CardColumns, Collapse} from 'reactstrap';
+import { Alert, Button, Row, Col, Card, Modal, 
+    ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input} from 'reactstrap';
 import { Component } from 'react'
 import Layout from './components/Layout';
 import './css/dashboard.css'
@@ -12,20 +12,27 @@ import Loading from './components/Loading';
 import NotFound from './notfound';
 import { withAuthSync } from './utils/auth';
 import cookie from 'js-cookie';
-import CommentForm from './commentform';
+import CommentModal from './components/CommentModal';
 
 class ViewUserPage extends Component{
 
     constructor (props) {
         super(props)
         this.state = {
+            name: this.props.name,
             collapse: false,
             isOwn: false, 
+            toEdit: false,
+            modalVisible: false,
         }
         this.renderCards= this.renderCards.bind(this)
         this.renderCardGroups= this.renderCardGroups.bind(this)
-        this.toggle= this.toggle.bind(this)
+        this.editOn= this.editOn.bind(this)
+        this.editOff= this.editOff.bind(this)
         this.shuffle= this.shuffle.bind(this)
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
+        this.handleShow = this.handleShow.bind(this)
     }
 
     async componentDidMount() {
@@ -99,10 +106,14 @@ class ViewUserPage extends Component{
         }
     }
 
-    toggle(event) {
-        var username= event.target.id
-        var collapsename= "collapse" + username
-        this.setState(state => ({ [collapsename]: !this.state[collapsename] }));
+    editOn(state) {
+        this.setState({toEdit: true, flagEdit: state, comment: state.comment});
+        console.log(this.state)
+    }
+
+    editOff(event) {
+        this.setState({toEdit: false});
+        console.log(this.state)
     }
 
     renderCards(){
@@ -145,6 +156,29 @@ class ViewUserPage extends Component{
 
             }
 
+            if(state.audiobuffer){
+                console.log("Got here")
+                var myRef = React.createRef();
+                var audio=<div><h1>There is audio here</h1></div>
+                // <div style={{paddingTop: "10px"}}>
+                //     <audio style={{width: "100%"}} controls ref={myRef} src={URL.createObjectURL(state.audiofile)}/>
+                // </div>
+                console.log(audio)
+            }
+            else
+            {
+                var audio=<div></div>
+            }
+
+            if(state.image){
+                var image=<img src={state.image} style={{width: "100%"}}/>
+            }
+            else
+            {
+                var image=<div></div>
+            }
+    
+
             var cardContent= 
                 (<div style={{padding: "10%"}}>
                 <div>
@@ -154,21 +188,33 @@ class ViewUserPage extends Component{
                 <h4>{state.firstName} {state.lastName}</h4>
                 </div>
                 {comment}
+                {image}
                 </div>)
-            if (!state.isLive)
+            
+
+            if (this.state.fromuser)
             {
-                return(
-                    <Fade bottom duration={2000} delay={100}>
-                    <Card style={cardStyle}>
-                    {cardContent}
-                    </Card>
-                    </Fade>
-                )
+                if (this.state.fromuser.username == state.from)
+                {
+                    return(
+                        <Fade bottom duration={2000} delay={100}>
+                            <Card style={cardStyle}>
+                            {cardContent}
+                            <Button color="danger" id={state._id} onClick={() => this.editOn(state)}>Edit / Delete</Button>
+                            </Card>
+                        </Fade>
+                    )
+                }
             }
-            else
-            {
-                return
-            }
+            
+            return(
+                <Fade bottom duration={2000} delay={100}>
+                <Card style={cardStyle}>
+                {cardContent}
+                </Card>
+                </Fade>
+            )
+
         })
 
     }
@@ -224,8 +270,24 @@ class ViewUserPage extends Component{
         return <Row>{deck}</Row>
     }
 
+    handleInputChange(event) {
+        const target = event.target;
+        const name = target.id;
+        const value = target.value;
+        this.setState({
+            [name]: value,
+        });
+    }
 
-    
+    handleCancel(){
+        this.setState({modalVisible: false, toEdit: undefined})
+        console.log(this.state)
+    }
+
+    handleShow(){
+        this.setState({modalVisible: true})
+    }
+
     render(){
         const titleStyle= {
             textAlign: 'center', 
@@ -242,18 +304,27 @@ class ViewUserPage extends Component{
             )
         }
 
-        var commentform = <div></div>
+
+        var commentmodal = <div></div>
         if(this.state.user){
             if(this.state.fromuser){
-                var data = {
-                    from: this.state.fromuser.username, 
-                    firstName: this.state.fromuser.firstName, 
-                    lastName: this.state.fromuser.lastName, 
-                    avatar: this.state.fromuser.avatar, 
-                    to: this.state.user.username
+                if(this.state.modalVisible){
+                    var data = {
+                        from: this.state.fromuser.username, 
+                        firstName: this.state.fromuser.firstName, 
+                        lastName: this.state.fromuser.lastName, 
+                        avatar: this.state.fromuser.avatar, 
+                        to: this.state.user.username
+                    }
+                    commentmodal = <CommentModal data = {data} handleCancel= {this.handleCancel} create/>
                 }
-                commentform = <CommentForm data = {data}/>
+                
             }
+        }
+
+        var editmodal =<div></div>
+        if(this.state.toEdit){
+            editmodal= <CommentModal data = {this.state.flagEdit} handleCancel= {this.handleCancel}/>
         }
         
         if(this.state.data){
@@ -275,6 +346,8 @@ class ViewUserPage extends Component{
             return(
             <div style={titleStyle}>
             <Layout>
+                {commentmodal}
+                {editmodal}
                 <SimpleTitle>
                 <div>
                 <Fade bottom duration={3000}>
@@ -283,12 +356,16 @@ class ViewUserPage extends Component{
                         <Col md= {6}>
                             {avatar}
                         </Col>
-                        <Col md = {6}>
+                        <Col md = {6} style={{paddingLeft: "5%"}}>
                         <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
                         <p>{this.state.user.bio}</p>
+                        <Button color='primary' onClick={this.handleShow}>
+                            <h4 style={{fontSize: "25px"}}>Make A Post</h4>
+                        </Button>
                         </Col>
                     </Row>
-                    {commentform}
+                    
+                    
                 </div>
                 </Fade>
                 </div>

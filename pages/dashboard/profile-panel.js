@@ -94,9 +94,9 @@ class ProfilePanel extends Component {
             if(value.length==0){
                 this.setState({error: "Email field cannot be empty."})
             }
-            else if (!(value.includes("seas") || value.includes("wharton")))
+            else if (!(value.includes("@") && value.includes("upenn")))
             {
-                this.setState({error: "Please enter a valid SEAS or Wharton email."})
+                this.setState({error: "Please enter a valid Penn email."})
             }
             else
             {
