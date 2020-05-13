@@ -1,3 +1,10 @@
+# Bell 2020 Yearbook
+This repository is for the bell2020 yearbook, compiled for remote yearbook signing.
+As of the most recent version, it supports user login as well as posting comments 
+and images. Data is stored in MongoDB Atlas. Live at: https://bellseniors.herokuapp.com
+
+# React-App Details Below
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

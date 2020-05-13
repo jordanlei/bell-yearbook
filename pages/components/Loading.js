@@ -28,10 +28,16 @@ class Loading extends Component{
 
     var quote = ""
     var random = Math.random()
-    if(random < 0.33){
+    if(random < 0.2){
       quote = "You had me at Hello World..."
     }
-    else if (random < 0.66){
+    else if (random < 0.4){
+      quote = "Chillin at the Poconos..."
+    }
+    else if (random < 0.6){
+      quote = "Practicing Elevator Pitch..."
+    }
+    else if (random < 0.8){
       quote = "Mining Bitcoin..."
     }
     else{
