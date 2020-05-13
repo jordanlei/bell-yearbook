@@ -231,14 +231,14 @@ class ProfilePanel extends Component {
       {avatar}
       <div style={{textAlign: "center"}}>
       <h4>{state.firstName} {state.lastName}</h4>
-      <h5><b>{state.email}</b></h5>
       </div>
       {state.bio}
       {/* <Button outline color="secondary" block onClick= {this.toggle}>See More</Button> */}
     </div>)
 
     return (
-      <div className= "dashboard-container" style= {{backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))"}}>
+      <div className= "dashboard-container" style= {{backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))", 
+      paddingTop: "5vh"}}>
       <Row>
         <Col md={2}>
           <DashboardMenu dark displayPanel={this.props.displayPanel}/>

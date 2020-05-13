@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch'
 import UserLayout from './components/UserLayout'
+import Layout from './components/Layout'
 import { withAuthSync } from './utils/auth'
 import { Component } from 'react'
 import { logout } from './utils/auth'
@@ -78,17 +79,19 @@ class Profile extends Component{
         if(this.state.data)
         {
             return(
-                <div className= "layout">
+                <Layout>
+                <div>
                     {this.renderPanel()}
                 </div>
+                </Layout>
             )
         }
         else
         {
             return(
-                <UserLayout>
+                <Layout>
                     <Loading/>
-                </UserLayout>
+                </Layout>
             )
         }        
     }

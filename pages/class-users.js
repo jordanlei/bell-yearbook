@@ -113,8 +113,8 @@ class ClassUsers extends Component{
                 <h4>{state.firstName} {state.lastName}</h4>
                 </div>
                 {bio}
-                <a href="/">
-                    <Button outline color="secondary" block id={state.username} onClick= {this.toggle}>See More</Button>
+                <a href={"/view/" + state.username}>
+                    <Button outline color="secondary" block id={state.username} onClick= {this.toggle}>View Page</Button>
                 </a>
 
                 </div>)

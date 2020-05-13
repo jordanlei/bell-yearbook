@@ -4,6 +4,9 @@ import { Alert, Button, ButtonGroup, Row, Col,
 import { Link } from 'react-router-dom';
 import DashboardMenu from './dashboard-menu';
 import Fade from 'react-reveal/Fade';
+const bcrypt= require('bcryptjs');
+
+const SALT_WORK_FACTOR = 10
 
 class SettingsPanel extends Component {
   constructor(props) {
@@ -74,12 +77,23 @@ class SettingsPanel extends Component {
 
     var json = {
       username: this.state.username,
-      isLive: this.state.isLive
+      isLive: this.state.isLive, 
     };
 
-    if(this.state.password.length > 0){
-      json.password = this.state.password;
-    }
+    var pass = this.state.password
+
+    if(pass.length > 0){
+      console.log("here")
+      var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
+        console.log("here")
+        if (err) throw err;
+        return salt;  
+      })
+      var hash = bcrypt.hashSync(pass, salt, function(err, hash){
+        if (err) return next(err); 
+        return hash})
+      json.password = hash;
+    } 
 
     console.log(json)
 
@@ -141,7 +155,8 @@ class SettingsPanel extends Component {
     }
 
     return (
-        <div className= "dashboard-container" style= {{backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))"}}>
+        <div className= "dashboard-container" style= {{backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))", 
+        paddingTop: "5vh"}}>
         <Row>
           <Col md={2}>
             <DashboardMenu dark displayPanel={this.props.displayPanel}/>
@@ -167,7 +182,7 @@ class SettingsPanel extends Component {
                     />
                     </FormGroup>
                     <FormGroup>
-                    <Label for="password">Password</Label>
+                    <Label for="password">Update Password (leave blank if not)</Label>
                     <Input
                         type="password"
                         id="password"

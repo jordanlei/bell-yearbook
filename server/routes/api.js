@@ -93,6 +93,7 @@ router.post('/updateuser', function(req, res, next) {
   var searchname = req.body.username;
   // find the policymaker
   console.log("Updating User")
+  console.log(req.body)
   User.findOneAndUpdate({ username: searchname }, req.body, {new: true},  (err, user) => {
     if (err) {
       res.type('html').status(200);
