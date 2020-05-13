@@ -154,14 +154,15 @@ class Register extends Component {
         const titleStyle= {
             textAlign: 'center', 
             minHeight: "100vh", 
-            backgroundImage: "linear-gradient(rgb(208, 212, 229), rgb(159, 167, 201))", 
+            backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))", 
+            color: "rgba(255, 255, 255, 0.9)",
             backgroundAttachment: "fixed",     
             backgroundSize: "cover"
         }
 
         return (
         <div style={titleStyle}>
-        <Layout light>
+        <Layout>
             <SimpleTitle >
                 <Fade bottom duration={3000}>
                 <div style={{width: "50vw", margin:"0 auto"}}>

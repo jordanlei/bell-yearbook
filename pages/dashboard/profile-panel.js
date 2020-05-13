@@ -202,7 +202,8 @@ class ProfilePanel extends Component {
       marginLeft: "5%", 
       marginRight: "5%",
       marginBottom: "10vh",
-      backgroundColor: "rgba(255, 255, 255, 0.7)"
+      backgroundColor: "rgba(0, 0, 0, 0.7)", 
+      color: "rgba(255, 255, 255, 0.9)"
     }
 
     
@@ -231,8 +232,13 @@ class ProfilePanel extends Component {
       {avatar}
       <div style={{textAlign: "center"}}>
       <h4>{state.firstName} {state.lastName}</h4>
+      <h5>
+        <br/>
+          <b>"</b>{state.bio}<b>"</b><br/>
+        <br/>
+      </h5>
       </div>
-      {state.bio}
+      
       {/* <Button outline color="secondary" block onClick= {this.toggle}>See More</Button> */}
     </div>)
 
@@ -300,7 +306,7 @@ class ProfilePanel extends Component {
                     <FormGroup>
                         <Label for="bio">Blurb</Label>
                         <Input
-                            style={{minHeight: "5em"}}
+                            style={{minHeight: "5em", textAlign: "center"}}
                             type="textarea"
                             id="bio"
                             value={this.state.bio}
