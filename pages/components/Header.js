@@ -54,18 +54,12 @@ class Header extends Component{
     return(
       <div style= {headerStyle}>
         <Navbar light= {this.props.light} dark= {!this.props.light} expand="md" style= {{paddingLeft: "3%", paddingRight: "3%"}}>
-          <NavbarBrand href="/"><h4>&amp;</h4></NavbarBrand>
+          <NavbarBrand href="/"><img src="/spinny-hat.png" style={{width:"100px"}}></img></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem style={{marginRight: "10px"}}>
                 <NavLink href="/classof/2020"><p>2020</p></NavLink>
-              </NavItem>
-              <NavItem style={{marginRight: "10px"}}>
-                <NavLink href="/classof/2021"><p>2021</p></NavLink>
-              </NavItem>
-              <NavItem style={{marginRight: "10px"}}>
-                <NavLink href="/classof/2022"><p>2022</p></NavLink>
               </NavItem>
               <NavItem style={{marginRight: "10px"}}>
                 <NavLink href="../about"><p>About</p></NavLink>

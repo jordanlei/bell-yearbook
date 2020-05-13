@@ -92,8 +92,8 @@ if (!dev && cluster.isMaster) {
       })
 
       server.get('/view/:id', (req, res) => {
-        const actualPage = '/people-viewall'
-        const queryParams = { id: req.params.id }
+        const actualPage = '/viewuser'
+        const queryParams = { name: req.params.id }
         nextApp.render(req, res, actualPage, queryParams)
       })
 

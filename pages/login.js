@@ -46,8 +46,7 @@ class Login extends Component {
       if (response.ok) {
         response.json().then(res => 
             {
-              console.log(res)
-              const token= this.state.password
+              const token= this.state.username
               console.log("Signing in")
               login(token)
             })

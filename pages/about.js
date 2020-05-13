@@ -29,7 +29,7 @@ class About extends Component {
             <h2>About</h2>
             </div>
             <div style={{position: "fixed", top: "70vh", width:"20vw"}}>
-            <p><i>This website was built by <br/>Jordan Lei, a senior in the M&amp;T Program.</i></p>
+            <p><i>Powered by Coffee, Anxiety, and a lotta Love.</i></p>
             </div>
             </Fade>
             </Col>
@@ -38,46 +38,25 @@ class About extends Component {
             <Col md={6}>
             <Fade duration={3000}>
               <div className="center-row">
-                <h4>To Whom It May Concern,<br/><br/></h4>
+                <h4>Well, here we are.<br/><br/></h4>
               </div>
               </Fade>
               <Fade bottom>
               <p>
-              The purpose of this resume book is to showcase the diversity of talent in the
-              Jerome Fisher Program in Management and Technology at the University of Pennsylvania. It is important to note that not all students in the Jerome Fisher Program
-              are featured in this book and that not all students included in this book are actively
-              seeking employment.
+              We finally made it. Four years of undergrad,
+              countless sleepless nights staying up for finals, 
+              too many coffee cups to count, and one Bell Poconos
+              Retreat later (among other things), we somehow 
+              made it to the other side. The people in Bell are 
+              some of the kindest, most intellectually curious 
+              people I know. And the Class of 2020 is certainly 
+              no exception to the rule. So whether you're in 
+              Philly, at home, or anywhere else in the world, 
+              let's celebrate. For four years of amazing memories, 
+              and for countless more to come. 
               </p>
               </Fade>
-              <Fade bottom>
-              <p>
-              This resume book aims to highlight the academic foci of the Program’s students
-              along with their unique skill sets and interests. Given the interdisciplinary nature of
-              the students’ curricula, many of them are particularly well-positioned to embark in
-              internships and careers beginning in product management, management consulting, financial technologies, venture capital, and entrepreneurship.
-              </p>
-              </Fade>
-
-              <Fade bottom>
-              <p>
-              Outside the classroom, Jerome Fisher Program students are involved in leading
-              student run initiatives on campus. They can be found in student government,
-              pre-professional consulting and investing clubs, student-run small-business incubators, investment funds, and even varsity sports.
-              Perhaps what makes the Program a truly impressive and well-rounded community
-              of students is the wide-variety of interesting ventures our students explore. From
-              the development of a commercial video game to authoring books and creating art,
-              Jerome Fisher Program students are true innovators and game-changers.
-              </p>
-              </Fade>
-
-              <Fade bottom>
-              <p>
-              The students featured in this resume book have agreed to have their information
-              shared with companies and potential employers and may be contacted directly at
-              the e-mail addresses provided.
-              Please feel free to get in touch with us if you have any questions about the program or our students.
-              </p>
-              </Fade>
+              
 
               
             </Col>

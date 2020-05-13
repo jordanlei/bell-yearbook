@@ -4,6 +4,7 @@ require('dotenv').config();
 
 // import the User class from User.js
 var User = require('../schemas/User.js');
+var Comment = require('../schemas/Comment.js');
 const bcrypt= require('bcryptjs');
 
 router.post('/createuser', function(req, res, next) {
@@ -53,7 +54,6 @@ router.post('/finduser', function(req, res, next) {
     }
   });
 });
-
 
 router.post('/authuser', function(req, res, next) {
   var searchname = req.body.username;
@@ -128,8 +128,6 @@ router.get('/findallusers', function(req, res, next) {
  });
 
  router.post('/findusers', function(req, res, next) {
-  console.log("got here")
-  console.log(req.body)
   // find all of the policymakers
   User.find(req.body, (err, users) => {
     if (err) {
@@ -143,6 +141,53 @@ router.get('/findallusers', function(req, res, next) {
     } else {
       res.type('html').status(200);
       res.json(users);
+    }
+  });
+});
+
+router.post('/createcomment', function(req, res, next) {
+  // construct the User from the form data which is in the request body
+  var comment = new Comment({
+    firstName: req.body.firstName, 
+    lastName: req.body.lastName,
+    from: req.body.from, 
+    to: req.body.to,
+    comment: req.body.comment,
+    avatar: req.body.avatar,
+  });
+  console.log("Comment Created")
+  // save the user to the database
+  comment.save(err => {
+    if (err) {
+      res.type('html').status(400);
+      res.write('uh oh: ' + err);
+      console.log(err);
+      res.end();
+    } else {
+      // send back succesful
+      res.type('html').status(200);
+      res.json(req.body);
+    }
+  });
+});
+
+
+router.post('/findcomments', function(req, res, next) {
+  console.log(req.body)
+  // find all of the policymakers
+  Comment.find(req.body, (err, comments) => {
+    if (err) {
+      res.type('html').status(200);
+      console.log('uh oh' + err);
+      res.write(err);
+    } else if (!comments) {
+      res.type('html').status(400);
+      res.write('No records are available at this time.');
+      res.end();
+    } else {
+      console.log(comments);
+      res.type('html').status(200);
+      res.json(comments);
     }
   });
 });

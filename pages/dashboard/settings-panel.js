@@ -12,7 +12,7 @@ class SettingsPanel extends Component {
       error: '',
 
       username: this.props.data.username,
-      password: this.props.data.password, 
+      password: '',  
       firstName: this.props.data.firstName, 
       lastName: this.props.data.lastName, 
       email: this.props.data.email,
@@ -74,15 +74,14 @@ class SettingsPanel extends Component {
 
     var json = {
       username: this.state.username,
-      password: this.state.password, 
-      firstName: this.state.firstName, 
-      lastName: this.state.lastName, 
-      email: this.state.email,
-      year: this.state.year,
-      bio: this.state.bio, 
-      funFact: this.state.funFact, 
       isLive: this.state.isLive
     };
+
+    if(this.state.password.length > 0){
+      json.password = this.state.password;
+    }
+
+    console.log(json)
 
     try {
       const response = await fetch(`/api/updateuser`, {

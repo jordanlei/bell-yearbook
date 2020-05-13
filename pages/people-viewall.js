@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Router from 'next/router';
-import { Form, FormGroup, Label, Input, Button, FormText, Row, Col } from 'reactstrap';
 import SimpleTitle from './components/SimpleTitle';
 import Layout from './components/Layout';
 import StyleDiv from './components/StyleDiv';
 
+
+
+
 const PeopleViewAll = props => (
-    <Layout>
+    <Layout light>
         <SimpleTitle>
             <h3>Welcome, {props.content.id}</h3>
         </SimpleTitle>

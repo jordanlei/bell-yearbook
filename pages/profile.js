@@ -1,20 +1,14 @@
-import Router from 'next/router'
 import fetch from 'isomorphic-unfetch'
-import nextCookie from 'next-cookies'
 import UserLayout from './components/UserLayout'
-import SimpleTitle from './components/SimpleTitle';
-import { Spinner, Button, Row, Col} from 'reactstrap';
-import StyleDiv from './components/StyleDiv'
 import { withAuthSync } from './utils/auth'
 import { Component } from 'react'
 import { logout } from './utils/auth'
 import Loading from './components/Loading';
-import DashboardMenu from './dashboard/dashboard-menu';
 import './css/dashboard.css'
 import WelcomePanel from './dashboard/welcome-panel';
 import ProfilePanel from './dashboard/profile-panel';
 import SettingsPanel from './dashboard/settings-panel';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 class Profile extends Component{
 

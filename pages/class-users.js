@@ -11,7 +11,6 @@ import Fade from 'react-reveal/Fade'
 import Loading from './components/Loading';
 
 class ClassUsers extends Component{
-
     constructor (props) {
         super(props)
         this.state = {
@@ -24,7 +23,7 @@ class ClassUsers extends Component{
     }
 
     async componentDidMount() {
-        var json= {year: this.props.year}
+        var json= {isLive: true}
         console.log(json)
         try {
             const response = await fetch(`/api/findusers`, {
@@ -75,9 +74,6 @@ class ClassUsers extends Component{
             marginBottom: "1em",
             }
 
-            var selectedIndustries= state.industries.map((val) =>{
-                return (<Button color="secondary" disabled style={{margin:"5px"}}>{val}</Button>)
-            })
 
             var avatar= <div></div>
             if(state.avatar)
@@ -90,54 +86,19 @@ class ClassUsers extends Component{
                 marginBottom: "10%", 
                 marginLeft: "5%", 
                 marginRight: "5%",
-                backgroundColor: "rgba(255, 255, 255, 0.7)"
+                backgroundColor: "rgba(0, 0, 0, 0.7)"
             }
 
             var collapsename= "collapse" + state.username
 
-            var position1= <div></div>
-            if(state.position1)
+            
+            var bio= <div></div>
+            if(state.bio)
             {
-                position1= 
-                <h5>
-                <b>{state.position1}, {state.place1}</b><br/>
-                <i>{state.startMonth1} {state.startYear1} - {state.endMonth1} {state.endYear1}</i><br/>
-                {state.description1}<br/><br/>
-                </h5>
-
-            }
-
-            var position2= <div></div>
-            if(state.position2)
-            {
-                position2= 
-                <h5>
-                    <b>{state.position2}, {state.place2}</b><br/>
-                    <i>{state.startMonth2} {state.startYear2} - {state.endMonth2} {state.endYear2}</i><br/>
-                    {state.description2}<br/><br/>
-                </h5>
-
-            }
-
-            var position3= <div></div>
-            if(state.position3)
-            {
-                position3= 
-                <h5>
-                    <b>{state.position3}, {state.place3}</b><br/>
-                    <i>{state.startMonth3} {state.startYear3} - {state.endMonth3} {state.endYear3}</i><br/>
-                    {state.description3}<br/><br/>
-                </h5>
-
-            }
-
-            var funFact= <div></div>
-            if(state.funFact)
-            {
-                funFact= 
+                bio= 
                 <h5>
                     <br/>
-                    <b>Fun Fact: </b>{state.funFact}<br/>
+                    <b>"</b>{state.bio}<b>"</b><br/>
                     <br/>
                 </h5>
 
@@ -150,38 +111,11 @@ class ClassUsers extends Component{
                 </div>
                 <div style={{textAlign: "center"}}>
                 <h4>{state.firstName} {state.lastName}</h4>
-                <h5><b>Class of {state.year}</b></h5>
-                <Collapse isOpen={this.state[collapsename]}>
-                <h5><b>{state.phone}</b></h5>
-                </Collapse>
-                <h5><b>{state.email}</b></h5>
                 </div>
-                <h5>
-                    <br/>
-                    <b>Concentrations: </b>{state.concentrations}<br/>
-                    <br/>
-                </h5>
-
-                <Collapse isOpen={this.state[collapsename]}>
-                {position1}
-
-                {position2}
-
-                {position3}
-                </Collapse>
-
-
-                <h5>
-                    <b>Industries: </b><br/>
-                    {selectedIndustries}
-                </h5>
-
-                <Collapse isOpen={this.state[collapsename]}>
-                {funFact}
-                </Collapse>
-                
-
-                <Button outline color="secondary" block id={state.username} onClick= {this.toggle}>See More</Button>
+                {bio}
+                <a href="/">
+                    <Button outline color="secondary" block id={state.username} onClick= {this.toggle}>See More</Button>
+                </a>
 
                 </div>)
             if (state.isLive)
@@ -225,11 +159,25 @@ class ClassUsers extends Component{
     {
         var cards= this.renderCards();
         var deck= [];
-        var length= Math.floor(cards.length/3) + 1
-        console.log(cards.length)
+        var length= Math.floor((cards.length)/3)
+        var lengths = []
+
+        if (cards.length % 3 == 1)
+        {
+            lengths = [length + 1, length, length]
+        }
+        else if (cards.length % 3 == 2)
+        {
+            lengths = [length + 1, length + 1, length]
+        }
+        else
+        {
+            lengths = [length, length, length]
+        }
+
         for(var i= 0; i< 3; i++)
         {
-        var removed = cards.splice(0, length)
+        var removed = cards.splice(0, lengths[i])
         deck.push(
             <Col md={4}>
             {removed}
@@ -240,21 +188,23 @@ class ClassUsers extends Component{
     }
 
 
+
     
     render(){
         const titleStyle= {
             textAlign: 'center', 
             minHeight: "100vh", 
-            backgroundImage: "linear-gradient(rgb(208, 212, 229), rgb(159, 167, 201))", 
+            backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))" , 
             backgroundAttachment: "fixed",     
-            backgroundSize: "cover"
+            backgroundSize: "cover",
+            color: "rgba(255, 255, 255, 0.9)",
         }
 
         
         if(this.state.data){
         return(
         <div style={titleStyle}>
-        <Layout light>
+        <Layout>
             <SimpleTitle>
             <div>
             <Fade bottom duration={3000}>
@@ -281,24 +231,6 @@ class ClassUsers extends Component{
             </div>
             )
         }
-        /*
-        if(this.state.data)
-        {
-            return(
-                <div className= "layout">
-                    {this.renderPanel()}
-                </div>
-            )
-        }
-        else
-        {
-            return(
-                <UserLayout>
-                    <Loading/>
-                </UserLayout>
-            )
-        }    
-        */    
     }
     
 }
