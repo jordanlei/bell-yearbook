@@ -15,7 +15,9 @@ class ClassUsers extends Component{
         super(props)
         this.state = {
             collapse: false,
+            query:"",
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.renderCards= this.renderCards.bind(this)
         this.renderCardGroups= this.renderCardGroups.bind(this)
         this.toggle= this.toggle.bind(this)
@@ -47,6 +49,16 @@ class ClassUsers extends Component{
               error
             )
           }
+    }
+
+    //generic input change handler
+    handleInputChange(event) {
+        const target = event.target;
+        const name = target.id;
+        const value = target.value;
+        this.setState({
+            [name]: value,
+        });
     }
 
     toggle(event) {
@@ -118,20 +130,26 @@ class ClassUsers extends Component{
                 </a>
 
                 </div>)
+                      
+
             if (state.isLive)
             {
-                return(
-                    <Fade bottom duration={2000} delay={100}>
-                    <Card className="classof-card" style={cardStyle}>
-                    {cardContent}
-                    </Card>
-                    </Fade>
-                )
+                var user = (state.username + " " + state.firstName + " " + state.lastName).toLowerCase()
+                var query = this.state.query.toLowerCase()
+                if(user.includes(query))
+                {
+                    console.log(user)
+                    console.log(query)
+                    return(
+                        <Fade bottom duration={2000} delay={100}>
+                        <Card className="classof-card" style={cardStyle}>
+                        {cardContent}
+                        </Card>
+                        </Fade>
+                    )
+                } 
             }
-            else
-            {
-                return
-            }
+            return 
         })
 
     }
@@ -210,6 +228,20 @@ class ClassUsers extends Component{
             <Fade bottom duration={3000}>
             <div style={{width: "50vw", margin:"0 auto"}}>
                 <h3>Class of {this.props.year}</h3>
+                <FormGroup>
+                <Input style={{ backgroundColor: "rgba(0, 0, 0, 0)", 
+                                width: "50vw",
+                                marginTop: "1em",
+                                fontSize: "30px",
+
+                            }}
+                    type="text"
+                    id="query"
+                    value={this.state.query}
+                    onChange={this.handleInputChange}
+                    placeholder={"Search"}
+                />
+                </FormGroup>
             </div>
             </Fade>
             </div>

@@ -150,7 +150,7 @@ class ViewUserPage extends Component{
                 comment= 
                 <h5>
                     <br/>
-                    <b>"</b>{state.comment}<b>"</b><br/>
+                    {state.comment}<br/>
                     <br/>
                 </h5>
 
@@ -304,10 +304,19 @@ class ViewUserPage extends Component{
             )
         }
 
-
+        var button=
+        <a href="../login">
+            <Button color='primary' onClick={this.handleShow}>
+                <h4 style={{fontSize: "20px"}}>Login To Make A Post</h4>
+            </Button>
+        </a>
         var commentmodal = <div></div>
         if(this.state.user){
             if(this.state.fromuser){
+                button=
+                <Button color='primary' onClick={this.handleShow}>
+                    <h4 style={{fontSize: "25px"}}>Make A Post</h4>
+                </Button>
                 if(this.state.modalVisible){
                     var data = {
                         from: this.state.fromuser.username, 
@@ -328,7 +337,12 @@ class ViewUserPage extends Component{
         }
         
         if(this.state.data){
-            var avatar = <div></div>
+            var header=
+            <div>
+                <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
+                <p>{this.state.user.bio}</p>
+                {button}
+            </div>
             if(this.state.user.avatar){
                 var imageStyle=
                     {backgroundImage: "url("+ this.state.user.avatar +")", 
@@ -339,7 +353,15 @@ class ViewUserPage extends Component{
                         backgroundSize:"cover",
                         marginBottom: "1em",
                     }
-                avatar= <Card style={imageStyle}></Card>
+                header= 
+                <Row>
+                    <Col md= {6}><Card style={imageStyle}></Card></Col>
+                    <Col md = {6} style={{paddingLeft: "5%"}}>
+                    <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
+                    <p>{this.state.user.bio}</p>
+                    {button}
+                    </Col>
+                </Row>
             }
 
             
@@ -351,22 +373,9 @@ class ViewUserPage extends Component{
                 <SimpleTitle>
                 <div>
                 <Fade bottom duration={3000}>
-                <div style={{width: "50vw", margin:"0 auto"}}>
-                    <Row>
-                        <Col md= {6}>
-                            {avatar}
-                        </Col>
-                        <Col md = {6} style={{paddingLeft: "5%"}}>
-                        <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
-                        <p>{this.state.user.bio}</p>
-                        <Button color='primary' onClick={this.handleShow}>
-                            <h4 style={{fontSize: "25px"}}>Make A Post</h4>
-                        </Button>
-                        </Col>
-                    </Row>
-                    
-                    
-                </div>
+                    <div className="text-center" style={{width: "50vw", margin:"0 auto"}}>
+                        {header}   
+                    </div>
                 </Fade>
                 </div>
                 </SimpleTitle>
