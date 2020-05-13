@@ -10,7 +10,7 @@ class About extends Component {
     const titleStyle= {
       textAlign: 'center', 
       minHeight: "100vh", 
-      backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))", 
+      backgroundImage: "linear-gradient(rgb(0, 0, 0), rgb(8, 17, 44))" , 
       color: "rgba(255, 255, 255, 0.9)",
       backgroundAttachment: "fixed",     
       backgroundSize: "cover"
@@ -56,6 +56,11 @@ class About extends Component {
               let's celebrate. For four years of amazing memories, 
               and for countless more to come. 
               </p>
+              <p>
+                If you'd like to leave a note, make an account and post 
+                a comment!
+              </p>
+
               </Fade>
               
 

@@ -1,6 +1,9 @@
 .layout{
   overflow: hidden;
   position: relative;
+  font-family: "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
 }
 
 .center-row{
@@ -135,4 +138,36 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.dotted-background{
+  background-image: url("/static/dotted-background.png");
+}
+
+.my-spinner{
+  background-image: url("/static/spinny-base.png");
+  background-size: cover; 
+  background-position: absolute;
+  width: 200px; 
+  height: 200px;
+}
+
+.my-loader {
+  background-image: url("/static/spinny-fan.png");
+  background-size: cover; 
+  background-position: absolute;
+  width: 200px;
+  height: 200px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 

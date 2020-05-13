@@ -25,7 +25,7 @@ class App extends Component{
       const titleStyle= {
         textAlign: 'center', 
         minHeight: "100vh", 
-        backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))"      
+        backgroundImage: "linear-gradient(rgb(0, 0, 0), rgb(8, 17, 44))"      
       }
 
         return (
@@ -35,17 +35,16 @@ class App extends Component{
               <div style= {spanStyle}>
                 <div style={{width: "30vw", margin:"0 auto"}}>
                 <img src="/spinny-hat.png" style={{width: "300px", zIndex: "-1"}}></img>
-                </div> 
-
-                
+              </div> 
               </div>
-              <div style={{top: "55vh", position: "absolute", width:"100vw"}}>
+              <div style={{top: "60vh", position: "absolute", width:"100vw"}}>
               <Fade bottom duration={3000} delay={1000}>
                 <h1 style={{color: "rgba(255, 255, 255, 0.7)", textAlign: "center"}}>Bell Yearbook</h1>
               </Fade> 
               </div>
             </Layout>
             </div>
+
           )
     }
 }

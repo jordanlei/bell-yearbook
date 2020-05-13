@@ -20,17 +20,31 @@ class Loading extends Component{
     const titleStyle= {
       textAlign: 'center', 
       minHeight: "100vh", 
-      backgroundImage: "linear-gradient(rgb(36, 52, 88), rgb(8, 17, 44))", 
+      backgroundImage: "linear-gradient(rgb(0, 0, 0), rgb(8, 17, 44))" , 
       backgroundAttachment: "fixed",     
       backgroundSize: "cover", 
       color: "rgba(255, 255, 255, 0.9)"
     }
 
+    var quote = ""
+    var random = Math.random()
+    if(random < 0.33){
+      quote = "You had me at Hello World..."
+    }
+    else if (random < 0.66){
+      quote = "Mining Bitcoin..."
+    }
+    else{
+      quote = "Starting Gradient Descent..."
+    }
     return(
       <div className= "layout" style= {titleStyle}>
-        <div style= {{margin: "0 auto", width: "20vh", textAlign: "center", paddingTop: "20vh"}}>
-          <h3>Please wait... <br/><br/></h3>
-          <Spinner style={{ width: '4rem', height: '4rem' }} />{' '}
+        <div style= {{margin: "0 auto", width: "40vw", textAlign: "center", paddingTop: "20vh"}}>
+          <h4>Please wait... <br/>{quote} <br/><br/></h4>
+          <div className="my-spinner" style={{margin: "0 auto", width: "200px"}}>
+            <div className="my-loader" style={{margin: "0 auto", width: "200px"}}>
+            </div>
+          </div>
         </div>
       </div>
     )
