@@ -50,8 +50,7 @@ class About extends Component {
               Retreat later (among other things), we somehow 
               made it to the other side. The people in Bell are 
               some of the kindest, most intellectually curious 
-              people I know. And the Class of 2020 is certainly 
-              no exception to the rule. So whether you're in 
+              people I know. So whether you're in 
               Philly, at home, or anywhere else in the world, 
               let's celebrate. For four years of amazing memories, 
               and for countless more to come. 
