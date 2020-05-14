@@ -106,7 +106,7 @@ class Header extends Component{
                 </DropdownToggle></p>
                 <DropdownMenu className= "dropdown" right style= {{backgroundColor: backgroundColor, marginTop: "7px"}}>
                   <DropdownItem>
-                    <NavLink href="../profile">User Settings</NavLink>
+                    <NavLink href="../profile">Dashboard</NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -140,7 +140,7 @@ class Header extends Component{
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                <p><DropdownToggle nav caret style={{marginRight: "10px"}}>
-                Users
+                Account
                 </DropdownToggle></p>
                 <DropdownMenu className= "dropdown" right style= {{backgroundColor: backgroundColor, marginTop: "7px"}}>
                   <DropdownItem>
