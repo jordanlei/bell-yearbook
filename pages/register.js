@@ -230,7 +230,7 @@ class Register extends Component {
                             onChange={this.handleInputChange}
                         />
                     </FormGroup>
-                    <div className="center-row" id="submit">
+                    <div className="center-row" id="submit" style={{paddingBottom: "10vh"}}>
                         <Button id="submit" onClick={this.handleSubmit} disabled={this.state.error}>
                                 Submit
                         </Button>
