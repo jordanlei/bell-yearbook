@@ -18,9 +18,11 @@ var userSchema = new Schema({
     password: {type: String, required: true, unique: false},
     year: Number,
     email: String,
+    school: String, 
     bio: String,
     avatar: String,
-    isLive: Boolean
+    isLive: Boolean,
+    tags: String, 
     });
 
 

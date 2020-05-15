@@ -117,7 +117,18 @@ class ViewUserPage extends Component{
     }
 
     renderCards(){
-        return this.state.data.map((state)=>
+        var selectData = []
+        for( var i = 0; i < this.state.data.length; i++){ 
+            if (this.state.data[i].tagsfrom && this.state.data[i].tagsto)
+            {
+                if (this.state.data[i].tagsfrom.includes("bell") && this.state.data[i].tagsto.includes("bell"))
+                {
+                    selectData.push(this.state.data[i])
+                }
+            }
+        }
+
+        return selectData.map((state)=>
         {
             var imageStyle=
             {backgroundImage: "url("+ state.avatar +")", 
@@ -323,7 +334,9 @@ class ViewUserPage extends Component{
                         firstName: this.state.fromuser.firstName, 
                         lastName: this.state.fromuser.lastName, 
                         avatar: this.state.fromuser.avatar, 
-                        to: this.state.user.username
+                        to: this.state.user.username,
+                        tagsfrom: this.state.fromuser.tags, 
+                        tagsto: this.state.user.tags,
                     }
                     commentmodal = <CommentModal data = {data} handleCancel= {this.handleCancel} create/>
                 }

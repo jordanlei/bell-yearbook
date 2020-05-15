@@ -109,7 +109,9 @@ class Register extends Component {
             firstName: this.state.firstName, 
             lastName: this.state.lastName, 
             email: this.state.email,
+            school: "University of Pennsylvania", 
             bio: this.state.bio, 
+            tags: "bell upenn main",
           };
     
         try {

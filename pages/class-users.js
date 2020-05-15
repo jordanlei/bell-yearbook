@@ -68,13 +68,22 @@ class ClassUsers extends Component{
     }
 
     renderCards(){
+        var selectData = []
         for( var i = 0; i < this.state.data.length; i++){ 
-            if ( !this.state.data[i].isLive) {
-              this.state.data.splice(i, 1); 
+            if (this.state.data[i].isLive)
+            {
+                if (this.state.data[i].tags)
+                {
+                    if(this.state.data[i].tags.includes("bell"))
+                    {
+                        selectData.push(this.state.data[i])
+                    }
+                }
+
             }
         }
-
-        return this.state.data.map((state)=>
+        
+        return selectData.map((state)=>
         {
             var imageStyle=
             {backgroundImage: "url("+ state.avatar +")", 
@@ -136,18 +145,15 @@ class ClassUsers extends Component{
             {
                 var user = (state.username + " " + state.firstName + " " + state.lastName).toLowerCase()
                 var query = this.state.query.toLowerCase()
-                if(user.includes(query))
-                {
-                    console.log(user)
-                    console.log(query)
-                    return(
-                        <Fade bottom duration={2000} delay={100}>
-                        <Card className="classof-card" style={cardStyle}>
-                        {cardContent}
-                        </Card>
-                        </Fade>
-                    )
-                } 
+                console.log(user)
+                console.log(query)
+                return(
+                    <Fade bottom duration={2000} delay={100}>
+                    <Card className="classof-card" style={cardStyle}>
+                    {cardContent}
+                    </Card>
+                    </Fade>
+                )
             }
             return 
         })
